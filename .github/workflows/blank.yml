@@ -14,10 +14,10 @@ jobs:
       - name: Push k3s image 
         run: | 
             ls -la
-            kubectl apply -f ./kubs/db.yaml
-            kubectl apply -f ./kubs/redis.yaml
-            kubectl apply -f ./kubs/saleor-api.yaml
-            kubectl apply -f ./kubs/saleor-dashboard.yaml
-            kubectl apply -f ./kubs/saleor-worker.yaml
+            kubectl apply -f /kubs/db.yaml
+            kubectl apply -f /kubs/redis.yaml
+            kubectl apply -f /kubs/saleor-api.yaml
+            kubectl apply -f /kubs/saleor-dashboard.yaml
+            kubectl apply -f /kubs/saleor-worker.yaml
             
             
