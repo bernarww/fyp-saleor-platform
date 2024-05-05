@@ -10,13 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure kubectl
-        uses: azure/kubectl@v1
-        with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+      # - name: Configure kubectl
+      #   uses: azure/kubectl@v1
+      #   with:
+      #     kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
       - uses: actions/checkout@v4
+      
       - name: Push k3s image 
         run: | 
+          echo $KUBE_CONFIG | base64 --decode > ${HOME}/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f path/to/your/kubernetes/manifests/
           kubectl apply -f ./kubs/db.yaml --validate=false
           kubectl apply -f ./kubs/redis.yaml
           kubectl apply -f ./kubs/saleor-api.yaml
